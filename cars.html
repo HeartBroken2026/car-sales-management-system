@@ -1,59 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Motors | Inventory</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <!-- <nav>
+    <nav>
         <a href="index.html" class="logo">STELLAR<span>MOTORS</span></a>
         <ul class="nav-links">
-            <li><a href="cars.html">Showroom</a></li>
-            <li><a href="#">Electric</a></li>
-            <li><a href="#">Service</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="cars.html" class="active">Showroom</a></li>
+            <li><a href="customers.html">Sales & Customers</a></li>
         </ul>
-    </nav> -->
+    </nav>
 
-    <div class="container" style="margin-top: 4rem;">
+    <div class="container">
         <div class="section-header">
             <h2>Inventory Management</h2>
-            <p>Manage fleet and view current stock</p>
+            <p>Manage fleet and assign vehicles to the showroom</p>
         </div>
 
-        <div class="filter-wrapper">
-            <input type="text" id="makeInput" placeholder="Make (e.g. BMW)">
-            <input type="text" id="modelInput" placeholder="Model (e.g. M3)">
-            <input type="number" id="priceInput" placeholder="Price">
-            <select id="typeInput">
-                <option value="Sedan">Sedan</option>
-                <option value="SUV">SUV</option>
-                <option value="Sport">Sport</option>
-            </select>
-            <button onclick="addCar()" class="btn">Add Car</button>
+        <div class="card" style="padding: 2rem; margin-bottom: 3rem;">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+                <div>
+                    <label
+                        style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Make</label>
+                    <input type="text" id="makeInput" placeholder="e.g. BMW">
+                </div>
+                <div>
+                    <label
+                        style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Model</label>
+                    <input type="text" id="modelInput" placeholder="e.g. M3">
+                </div>
+                <div>
+                    <label
+                        style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Price</label>
+                    <input type="number" id="priceInput" placeholder="e.g. 85000">
+                </div>
+                <div>
+                    <label
+                        style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Type</label>
+                    <select id="typeInput">
+                        <option value="Sedan">Sedan</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                </div>
+                <div>
+                    <button onclick="addCar()" class="btn" style="width: 100%;">Add Vehicle</button>
+                </div>
+            </div>
         </div>
 
-        <div class="section-header">
-            <h2>Featured Inventory</h2>
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h2>Showroom Floor</h2>
         </div>
-        
-        <div class="filter-wrapper">
-            <input type="text" id="searchBox" placeholder="Search make or model...">
-            <select id="typeFilter">
+
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center; flex-wrap: wrap;">
+            <input type="text" id="searchBox" placeholder="Search make or model..." style="max-width: 300px;">
+            <select id="typeFilter" style="max-width: 200px;">
                 <option value="all">All Body Types</option>
                 <option value="Sedan">Sedan</option>
                 <option value="SUV">SUV</option>
                 <option value="Sport">Sport</option>
+                <option value="Electric">Electric</option>
             </select>
         </div>
 
         <div class="car-grid" id="carGrid">
-            </div>
+            <!-- Populated by JS -->
+        </div>
     </div>
 
     <script src="js/cars.js"></script>
 </body>
+
 </html>
