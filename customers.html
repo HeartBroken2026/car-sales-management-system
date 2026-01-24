@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer & Sales | Stellar Motors</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">STELLAR<span>MOTORS</span></a>
+    <ul class="nav-links">
+      <li><a href="cars.html">Showroom</a></li>
+      <li><a href="customers.html" class="active">Sales & Customers</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="section-header">
+      <h2>Customer & Sales</h2>
+      <p>Track customer interactions and finalize sales</p>
+    </div>
+
+    <!-- ADD CUSTOMER -->
+    <div class="card" style="padding: 2rem; margin-bottom: 3rem;">
+      <h3 style="margin-bottom: 1.5rem; color: var(--text-main);">New Customer Sales</h3>
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+        <div>
+          <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Customer
+            Name</label>
+          <input id="customerName" type="text" placeholder="Full Name">
+        </div>
+        <div>
+          <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Phone
+            Number</label>
+          <input id="customerPhone" type="tel" placeholder="+1 (555) 000-0000">
+        </div>
+        <div>
+          <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Select
+            Vehicle</label>
+          <select id="carSelect"></select>
+        </div>
+        <div>
+          <button class="btn" onclick="addCustomer()" style="width: 100%;">Create Sales Record</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALES LIST -->
+    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem; padding-top: 0;">
+      <h3 style="font-size: 1.5rem;">Recent Transactions</h3>
+    </div>
+
+    <div class="card" style="overflow-x: auto;">
+      <style>
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          text-align: left;
+        }
+
+        th,
+        td {
+          padding: 1rem 1.5rem;
+          border-bottom: 1px solid var(--border);
+          color: var(--text-muted);
+        }
+
+        th {
+          background-color: var(--surface);
+          color: var(--text-main);
+          font-weight: 600;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        tr:last-child td {
+          border-bottom: none;
+        }
+
+        tr:hover td {
+          background-color: rgba(255, 255, 255, 0.02);
+          color: var(--text-main);
+        }
+      </style>
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Phone</th>
+            <th>Car Interest</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="salesTable"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="js/sales.js"></script>
+</body>
+
+</html>
