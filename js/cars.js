@@ -45,8 +45,8 @@ function deleteCar(id) {
 
 function renderCars(filteredList) {
     const grid = document.getElementById('carGrid');
-    if(!grid) return; // Guard clause in case function is called on wrong page
-    
+    if (!grid) return; // Guard clause in case function is called on wrong page
+
     grid.innerHTML = '';
 
     filteredList.forEach((car, index) => {
@@ -54,6 +54,7 @@ function renderCars(filteredList) {
         card.className = 'car-card';
         // Add staggered animation delay
         card.style.animationDelay = `${index * 0.1}s`;
+        card.style.animation = 'fadeIn 0.5s ease backwards';
 
         card.innerHTML = `
             <div class="img-container">
@@ -65,11 +66,10 @@ function renderCars(filteredList) {
                 <h3>${car.make} ${car.model}</h3>
                 <p class="price">$${car.price.toLocaleString()}</p>
                 <div class="action-group">
-                    <button class="btn btn-text">view details</button>
-
-                    <button class="btn btn-icon" onclick="deleteCar(${car.id})" aria-label="Delete">
+                    <button class="btn" style="flex: 1; font-size: 0.9rem;">View Details</button>
+                    <button class="btn-delete" onclick="deleteCar(${car.id})" aria-label="Delete">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.316c0 .901.73 2 1.631 2h5.711z"/>
+                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
                         </svg>
                     </button>
                 </div>
@@ -79,6 +79,7 @@ function renderCars(filteredList) {
     });
 }
 
+
 function saveCars() {
     localStorage.setItem("cars", JSON.stringify(cars));
 }
@@ -86,9 +87,9 @@ function saveCars() {
 function filterCars() {
     const searchBox = document.getElementById('searchBox');
     const typeFilter = document.getElementById('typeFilter');
-    
+
     // Guard clause
-    if(!searchBox || !typeFilter) return;
+    if (!searchBox || !typeFilter) return;
 
     const search = searchBox.value.toLowerCase();
     const type = typeFilter.value;
@@ -107,9 +108,9 @@ window.addEventListener('DOMContentLoaded', () => {
     // Only init if we are on the page with these elements
     const searchBox = document.getElementById('searchBox');
     const typeFilter = document.getElementById('typeFilter');
-    
-    if(searchBox) searchBox.addEventListener('input', filterCars);
-    if(typeFilter) typeFilter.addEventListener('change', filterCars);
+
+    if (searchBox) searchBox.addEventListener('input', filterCars);
+    if (typeFilter) typeFilter.addEventListener('change', filterCars);
 
     renderCars(cars);
 });
