@@ -79,7 +79,3 @@ function animateValue(obj, start, end, duration) {
     };
     window.requestAnimationFrame(step);
 }
-<!--proper workflow -->
-
-
-

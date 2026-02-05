@@ -4,81 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Motors | Inventory</title>
+    <title>Inventory - Stellar Motors</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <nav>
-        <a href="index.html" class="logo">STELLAR<span>MOTORS</span></a>
-        <ul class="nav-links">
-            <li><a href="cars.html" class="active">Showroom</a></li>
-            <li><a href="customers.html">Sales & Customers</a></li>
-        </ul>
-    </nav>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">STELLAR<span>MOTORS</span></div>
+            </div>
 
-    <div class="container">
-        <div class="section-header">
-            <h2>Inventory Management</h2>
-            <p>Manage fleet and assign vehicles to the showroom</p>
-        </div>
+            <nav>
+                <a class="nav-item" href="dashboard.html">Dashboard</a>
+                <a class="nav-item active" href="cars.html">Cars Inventory</a>
+                <a class="nav-item" href="customers.html">Customers</a>
+            </nav>
 
-        <div class="card" style="padding: 2rem; margin-bottom: 3rem;">
+            <div class="logout-wrapper">
+                <button id="themeToggle" class="theme-toggle-btn">
+                    <span>🌓</span> Switch Theme
+                </button>
+                <a class="nav-item" href="#" id="logoutCarsBtn" style="margin-top: 0.5rem;">Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="top-bar">
+                <div>
+                    <h2>Inventory Management</h2>
+                    <p>Manage fleet and showroom items</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; align-items: end;">
+                    <div>
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Make</label>
+                        <input type="text" id="makeInput" placeholder="e.g. BMW">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Model</label>
+                        <input type="text" id="modelInput" placeholder="e.g. M3">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Price</label>
+                        <input type="number" id="priceInput" placeholder="e.g. 85000">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Type</label>
+                        <select id="typeInput">
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Electric">Electric</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button onclick="addCar()" class="btn" style="width: 100%;">Add Vehicle</button>
+                    </div>
+                </div>
+            </div>
+
             <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
-                <div>
-                    <label
-                        style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Make</label>
-                    <input type="text" id="makeInput" placeholder="e.g. BMW">
-                </div>
-                <div>
-                    <label
-                        style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Model</label>
-                    <input type="text" id="modelInput" placeholder="e.g. M3">
-                </div>
-                <div>
-                    <label
-                        style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Price</label>
-                    <input type="number" id="priceInput" placeholder="e.g. 85000">
-                </div>
-                <div>
-                    <label
-                        style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Type</label>
-                    <select id="typeInput">
+                style="display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <h3>Showroom Floor</h3>
+                <div style="display: flex; gap: 1rem;">
+                    <input type="text" id="searchBox" placeholder="Search..." style="width: 200px;">
+                    <select id="typeFilter" style="width: 150px;">
+                        <option value="all">All Types</option>
                         <option value="Sedan">Sedan</option>
                         <option value="SUV">SUV</option>
                         <option value="Sport">Sport</option>
                         <option value="Electric">Electric</option>
                     </select>
                 </div>
-                <div>
-                    <button onclick="addCar()" class="btn" style="width: 100%;">Add Vehicle</button>
-                </div>
             </div>
-        </div>
 
-        <div class="section-header" style="margin-bottom: 2rem;">
-            <h2>Showroom Floor</h2>
-        </div>
-
-        <div style="display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center; flex-wrap: wrap;">
-            <input type="text" id="searchBox" placeholder="Search make or model..." style="max-width: 300px;">
-            <select id="typeFilter" style="max-width: 200px;">
-                <option value="all">All Body Types</option>
-                <option value="Sedan">Sedan</option>
-                <option value="SUV">SUV</option>
-                <option value="Sport">Sport</option>
-                <option value="Electric">Electric</option>
-            </select>
-        </div>
-
-        <div class="car-grid" id="carGrid">
-            <!-- Populated by JS -->
-        </div>
+            <div class="car-grid" id="carGrid">
+                <!-- Populated by JS -->
+            </div>
+        </main>
     </div>
 
+    <script src="js/auth.js"></script>
     <script src="js/cars.js"></script>
+    <script>
+        // Auth Check
+        Auth.requireAuth();
+
+        document.getElementById('logoutCarsBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            Auth.logout();
+        });
+
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            Auth.toggleTheme();
+        });
+    </script>
 </body>
 
 </html>

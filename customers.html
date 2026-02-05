@@ -2,109 +2,103 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Customer & Sales | Stellar Motors</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers - Stellar Motors</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <nav>
-    <a href="index.html" class="logo">STELLAR<span>MOTORS</span></a>
-    <ul class="nav-links">
-      <li><a href="cars.html">Showroom</a></li>
-      <li><a href="customers.html" class="active">Sales & Customers</a></li>
-    </ul>
-  </nav>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">STELLAR<span>MOTORS</span></div>
+      </div>
 
-  <div class="container">
-    <div class="section-header">
-      <h2>Customer & Sales</h2>
-      <p>Track customer interactions and finalize sales</p>
-    </div>
+      <nav>
+        <a class="nav-item" href="dashboard.html">Dashboard</a>
+        <a class="nav-item" href="cars.html">Cars Inventory</a>
+        <a class="nav-item active" href="customers.html">Customers</a>
+      </nav>
 
-    <!-- ADD CUSTOMER -->
-    <div class="card" style="padding: 2rem; margin-bottom: 3rem;">
-      <h3 style="margin-bottom: 1.5rem; color: var(--text-main);">New Customer Sales</h3>
-      <div
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+      <div class="logout-wrapper">
+        <button id="themeToggle" class="theme-toggle-btn">
+          <span>🌓</span> Switch Theme
+        </button>
+        <a class="nav-item" href="#" id="logoutBtn">Logout</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="top-bar">
         <div>
-          <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Customer
-            Name</label>
-          <input id="customerName" type="text" placeholder="Full Name">
-        </div>
-        <div>
-          <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Phone
-            Number</label>
-          <input id="customerPhone" type="tel" placeholder="+1 (555) 000-0000">
-        </div>
-        <div>
-          <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Select
-            Vehicle</label>
-          <select id="carSelect"></select>
-        </div>
-        <div>
-          <button class="btn" onclick="addCustomer()" style="width: 100%;">Create Sales Record</button>
+          <h2>Sales & Customers</h2>
+          <p>Track leads and closed deals</p>
         </div>
       </div>
-    </div>
 
-    <!-- SALES LIST -->
-    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem; padding-top: 0;">
-      <h3 style="font-size: 1.5rem;">Recent Transactions</h3>
-    </div>
+      <div class="card">
+        <h3 style="margin-bottom: 1.5rem;">Register New Interest</h3>
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Customer
+              Name</label>
+            <input type="text" id="customerName" placeholder="Full Name">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Phone
+              Number</label>
+            <input type="text" id="customerPhone" placeholder="+1 234 567 8900">
+          </div>
+          <div>
+            <label
+              style="display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Interested
+              Vehicle</label>
+            <select id="carSelect">
+              <option>Loading...</option>
+            </select>
+          </div>
+          <div>
+            <button onclick="addCustomer()" class="btn" style="width: 100%;">Create Lead</button>
+          </div>
+        </div>
+      </div>
 
-    <div class="card" style="overflow-x: auto;">
-      <style>
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          text-align: left;
-        }
-
-        th,
-        td {
-          padding: 1rem 1.5rem;
-          border-bottom: 1px solid var(--border);
-          color: var(--text-muted);
-        }
-
-        th {
-          background-color: var(--surface);
-          color: var(--text-main);
-          font-weight: 600;
-          font-size: 0.9rem;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-
-        tr:last-child td {
-          border-bottom: none;
-        }
-
-        tr:hover td {
-          background-color: rgba(255, 255, 255, 0.02);
-          color: var(--text-main);
-        }
-      </style>
-      <table>
-        <thead>
-          <tr>
-            <th>Customer</th>
-            <th>Phone</th>
-            <th>Car Interest</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="salesTable"></tbody>
-      </table>
-    </div>
-
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Vehicle</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="salesTable">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </main>
   </div>
 
+  <script src="js/auth.js"></script>
   <script src="js/sales.js"></script>
+  <script>
+    // Auth Check
+    Auth.requireAuth();
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      Auth.toggleTheme();
+    });
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      Auth.logout();
+    });
+  </script>
 </body>
-
 </html>
