@@ -52,12 +52,7 @@ body {
     transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     color: var(--text-main);
 }
@@ -269,6 +264,12 @@ nav {
     transform: translateY(-1px);
 }
 
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
 input,
 select {
     width: 100%;
@@ -413,6 +414,121 @@ td {
     color: var(--text-main);
 }
 
+/* Hero Section (Landing Page) */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--card-bg) 100%);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: var(--primary);
+    filter: blur(150px);
+    opacity: 0.1;
+    border-radius: 50%;
+    top: -200px;
+    left: -200px;
+    z-index: 0;
+    animation: float 20s infinite ease-in-out;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: var(--accent);
+    filter: blur(150px);
+    opacity: 0.1;
+    border-radius: 50%;
+    bottom: -100px;
+    right: -100px;
+    z-index: 0;
+    animation: float 15s infinite ease-in-out reverse;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.hero h1 span {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-md);
+}
+
+.theme-toggle-fixed {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(50px, 50px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .sidebar {
@@ -424,5 +540,17 @@ td {
     .main-content {
         margin-left: 0;
         padding: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .dashboard-container {
+        flex-direction: column;
     }
 }
