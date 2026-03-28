@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_USER = "your-dockerhub-username"
+        DOCKER_USER = "notmuwafaq"
         CLIENT_IMAGE = "car-sales-client"
         SERVER_IMAGE = "car-sales-server"
     }
