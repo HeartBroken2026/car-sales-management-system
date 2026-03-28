@@ -12,8 +12,10 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 
 const app = express();
 
-// Middleware
-app.use(cors());
+app.use(cors({
+  origin: "*", // Vite default port
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
