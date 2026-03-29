@@ -48,10 +48,9 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'sudo chown -R $(whoami) $HOME/.minikube && chmod -R u+wrx $HOME/.minikube'
                 sh 'minikube start'
                 sh 'kubectl apply -f k8s/ --validate=false'
             }
-}
+        }
     }
 }
