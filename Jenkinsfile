@@ -48,8 +48,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'minikube start'
-                sh 'kubectl apply -f k8s/ --validate=false'
+                sh 'kubectl --kubeconfig=$KUBECONFIG apply -f k8s/ --validate=false'
             }
         }
     }
