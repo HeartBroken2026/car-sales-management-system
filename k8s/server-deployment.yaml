@@ -19,6 +19,6 @@ spec:
             - containerPort: 5000
           env:
             - name: MONGO_URI
-              value: "mongodb+srv://brainly@cluster0.dgi3szt.mongodb.net/"
+              value: "mongodb+srv://brainly:dJORtzPCSnDqpZAQ@cluster0.dgi3szt.mongodb.net/"
             - name: PORT
               value: "5000"
