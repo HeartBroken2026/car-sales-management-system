@@ -17,3 +17,8 @@ spec:
           image: notmuwafaq/car-sales-server
           ports:
             - containerPort: 5000
+          env:
+            - name: MONGO_URI
+              value: "mongodb+srv://brainly:C1xwOEVHy8DuzL9g@cluster0.dgi3szt.mongodb.net/car-sales"
+            - name: PORT
+              value: "5000"
