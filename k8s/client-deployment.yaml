@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: client
-          image: your-dockerhub-username/car-sales-client
+          image: notmuwafaq/car-sales-client
           ports:
             - containerPort: 80

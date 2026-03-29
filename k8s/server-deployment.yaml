@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: server
-          image: your-dockerhub-username/car-sales-server
+          image: notmuwafaq/car-sales-server
           ports:
             - containerPort: 5000
